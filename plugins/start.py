@@ -47,7 +47,7 @@ async def start_command(client: Client, message: Message):
     SHORTLINK_API = await db.get_shortener_api()
     TUT_VID = await db.get_tut_video()
     ADMINS = await db.get_all_admins()
-    MIN_VERIFY_TIME = 30  # Minimum time (in seconds) before verification
+    MIN_VERIFY_TIME = 45  # Minimum time (in seconds) before verification
 
     logging.info(f"Received /start command from user ID: {id}")
 
@@ -98,7 +98,9 @@ async def start_command(client: Client, message: Message):
             if not generated_time or (time.time() - generated_time) < MIN_VERIFY_TIME:
                 remaining_time = int(MIN_VERIFY_TIME - (time.time() - generated_time))
                 logging.warning(f"User {id} tried to verify too early. Remaining time: {remaining_time} sec")
-                return await message.reply("<blockquote>Yᴏᴜʀ ᴛᴏᴋᴇɴ ɪs ɪɴᴠᴀʟɪᴅ ᴏʀ ᴇxᴘɪʀᴇᴅ. Tʀʏ ᴀɢᴀɪɴ ʙʏ ᴄʟɪᴄᴋɪɴɢ /start</blockquote>")
+                return await message.reply_video(
+			video = "https://envs.sh/ekQ.mp4"
+			caption = "<blockquote>Yᴏᴜʀ ᴛᴏᴋᴇɴ ɪs ɪɴᴠᴀʟɪᴅ ᴏʀ ᴇxᴘɪʀᴇᴅ. Tʀʏ ᴀɢᴀɪɴ ʙʏ ᴄʟɪᴄᴋɪɴɢ /start</blockquote>")
 
         # If token is valid and has waited long enough, verify user
             await update_verify_status(id, is_verified=True, verified_time=time.time())
