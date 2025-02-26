@@ -1,19 +1,30 @@
 # +++ Customised By Rohit [telegram username: @rohit_1888] +++
 
-import os
-import sys
-import random
 import asyncio
-import subprocess
+import base64
+import logging
+import os
+import random
+import re
+import string 
+import string as rohit
+import time
+from pyrogram import Client, filters, __version__
+from pyrogram.enums import ParseMode, ChatAction
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
+from plugins.autoDelete import auto_del_notification, delete_message
 from bot import Bot
+from config import *
+from helper_func import *
+from database.database import *
+from plugins.FORMATS import *
 from database.database import db
 from database.db_verify import *
-from pyrogram import Client, filters
-from pyrogram.errors import FloodWait
-from plugins.FORMATS import *
-from plugins.autoDelete import auto_del_notification, delete_message
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
-from helper_func import *
+from config import *
+from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid
+from datetime import datetime, timedelta
+from pytz import timezone
 
 
 # +++ Customised By Rohit [telegram username: @rohit_1888] +++
