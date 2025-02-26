@@ -88,3 +88,18 @@ async def update_verify_status(user_id, verify_token="", is_verified=False, veri
         }},
         upsert=True  # Creates a document if not found
     )
+
+
+# Function to store generated_time in vers_data collection
+async def store_generated_time(user_id, generated_time):
+    await vers_data.update_one(
+        {"user_id": user_id}, 
+        {"$set": {"generated_time": generated_time}}, 
+        upsert=True
+    )
+    logging.info(f"Stored generated_time for user {user_id}: {generated_time}")
+
+# Function to get generated_time from vers_data collection
+async def get_generated_time(user_id):
+    data = await vers_data.find_one({"user_id": user_id})
+    return data.get("generated_time") if data else None
