@@ -99,7 +99,7 @@ async def start_command(client: Client, message: Message):
                 remaining_time = int(MIN_VERIFY_TIME - (time.time() - generated_time))
                 logging.warning(f"User {id} tried to verify too early. Remaining time: {remaining_time} sec")
                 return await message.reply_video(
-			video = "https://envs.sh/ekQ.mp4"
+			video = "https://envs.sh/ekQ.mp4",
 			caption = "<blockquote><b>🚨 Bʏᴘᴀss Aᴛᴛᴇᴍᴘᴛ Dᴇᴛᴇᴄᴛᴇᴅ! 🚨</blockquote>\n\n⚠ Wᴀʀɴɪɴɢ!</b><i> ʏᴏᴜ ᴍᴜsᴛ ʀᴇsᴏʟᴠᴇ ᴛʜᴇ ʟɪɴᴋ ᴛᴏ ᴀᴄᴄᴇss ᴛʜᴇ ғɪʟᴇ. ɴᴏ sʜᴏʀᴛᴄᴜᴛs, ɴᴏ ᴛʀɪᴄᴋs! ᴀɴʏ ᴀᴛᴛᴇᴍᴘᴛ ᴛᴏ ʙʏᴘᴀss ᴛʜᴇ sʏsᴛᴇᴍ ᴡɪʟʟ ᴛʀɪɢɢᴇʀ ᴀɴ ɪɴsᴛᴀɴᴛ ʙᴀɴ! 🚫🔥</i><b>\n\nTʀʏ ᴀɢᴀɪɴ ʙʏ ᴄʟɪᴄᴋɪɴɢ /start</b>")
 
         # If token is valid and has waited long enough, verify user
