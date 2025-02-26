@@ -1,4 +1,4 @@
-# +++ Made By Sanjiii [telegram username: @Urr_Sanjiii] +++
+# +++ Customised By Rohit [telegram username: @rohit_1888] +++
 
 import os
 import sys
@@ -15,6 +15,8 @@ from plugins.autoDelete import auto_del_notification, delete_message
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
 from helper_func import *
 
+
+# +++ Customised By Rohit [telegram username: @rohit_1888] +++
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
@@ -286,6 +288,7 @@ async def not_joined(client: Client, message: Message):
         print(f"Unable to perform forcesub buttons reason : {e}")
         return await temp.edit(f"<b><i>! ᴇʀʀᴏʀ, ᴄᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Urr_Sanjiii</i></b>\n<blockquote expandable><b>ʀᴇᴀsᴏɴ:</b> {e}</blockquote>")
 
+# +++ Customised By Rohit [telegram username: @rohit_1888] +++
 
 #=====================================================================================##
 #......... RESTART COMMAND FOR RESTARTING BOT .......#
