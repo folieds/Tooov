@@ -7,7 +7,7 @@ from logging.handlers import RotatingFileHandler
 
 
 #Bot token @Botfather, --⚠️ REQUIRED--
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "7045740764:AAGPFItTniVf2Djr8zOB2_oaZVDQh1wwaog")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "7791691420:AAGz6Re5WQbmKTEWE3txifpRCW002u7r3Ag")
 
 #Your API ID from my.telegram.org, --⚠️ REQUIRED--
 APP_ID = int(os.environ.get("APP_ID", "24371796"))
@@ -16,10 +16,10 @@ APP_ID = int(os.environ.get("APP_ID", "24371796"))
 API_HASH = os.environ.get("API_HASH", "8121c78f4b8b31e88cc2623d1277338d")
 
 #Your db channel Id --⚠️ REQUIRED--
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002016717904"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002163025446"))
 
 #OWNER ID --⚠️ REQUIRED--
-OWNER_ID = int(os.environ.get("OWNER_ID", "1439890119"))
+OWNER_ID = int(os.environ.get("OWNER_ID", "6076683960"))
 
 #SUPPORT_GROUP: This is used for normal users for getting help if they don't understand how to use the bot --⚠ OPTIONAL--
 SUPPORT_GROUP = os.environ.get("SUPPORT_GROUP", "-1002097138409")
@@ -28,10 +28,10 @@ SUPPORT_GROUP = os.environ.get("SUPPORT_GROUP", "-1002097138409")
 PORT = os.environ.get("PORT", "8080")
 
 #Database --⚠️ REQUIRED--
-DB_URL = os.environ.get("DB_URL", "mongodb+srv://AnimeRavenBots:AnimeRavenBots@animeravenbots.huekk.mongodb.net/?retryWrites=true&w=majority&appName=HitokiriBattousaiBot")
-DB_NAME = os.environ.get("DATABASE_NAME", "HitokiriBattousaiBot")
+DB_URL = os.environ.get("DB_URL", "mongodb+srv://sanji01:sanji01@sanjimongo02.zgs4i.mongodb.net/?retryWrites=true&w=majority")
+DB_NAME = os.environ.get("DATABASE_NAME", "Sukuna_Sama_Token_Bot")
 
-VERIFY_DB = os.environ.get("VERIFY_DB", "")
+VERIFY_DB = os.environ.get("VERIFY_DB", "mongodb+srv://sanjisama626:sanjisama626@sanjisama.lukxw8r.mongodb.net/?retryWrites=true&w=majority")
 
                         
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
