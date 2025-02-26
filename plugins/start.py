@@ -73,8 +73,10 @@ async def start_command(client: Client, message: Message):
         verify_status = await get_verify_status(id)
     #verify_status = await get_verify_status(id)
            
+
+# Main token verification logic
     if SHORTLINK_URL:
-        # Check if token has expired
+    # Check if token has expired
         if verify_status['is_verified'] and VERIFY_EXPIRE < (time.time() - verify_status['verified_time']):
             await update_verify_status(id, is_verified=False)
             logging.info(f"User {id} token expired, verification reset.")
@@ -83,10 +85,26 @@ async def start_command(client: Client, message: Message):
             _, token = message.text.split("_", 1)
             logging.info(f"User {id} entered token: {token}")
 
-            if verify_status['verify_token'] != token:
+            stored_token = verify_status.get('verify_token', None)
+            generated_time = await get_generated_time(id)  # Fetch generated_time from vers_data
+
+            logging.info(f"Stored token: {stored_token}, Generated time: {generated_time}")
+
+            if not stored_token or stored_token != token:
                 logging.warning(f"User {id} entered invalid token: {token}")
                 return await message.reply("<blockquote>Yᴏᴜʀ ᴛᴏᴋᴇɴ ɪs ɪɴᴠᴀʟɪᴅ ᴏʀ ᴇxᴘɪʀᴇᴅ. Tʀʏ ᴀɢᴀɪɴ ʙʏ ᴄʟɪᴄᴋɪɴɢ /start</blockquote>")
 
+        # Ensure the token is at least 30 seconds old before verification
+            if not generated_time or (time.time() - generated_time) < MIN_VERIFY_TIME:
+                remaining_time = int(MIN_VERIFY_TIME - (time.time() - generated_time))
+                logging.warning(f"User {id} tried to verify too early. Remaining time: {remaining_time} sec")
+                return await message.reply(
+                    f"<blockquote>Yᴏᴜ ᴄᴀɴ ᴏɴʟʏ ᴠᴇʀɪғʏ ᴀғᴛᴇʀ {MIN_VERIFY_TIME} sᴇᴄᴏɴᴅs.</blockquote>\n"
+                    f"<blockquote>Pʟᴇᴀsᴇ ᴡᴀɪᴛ {remaining_time} sᴇᴄᴏɴᴅs ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ.</blockquote>",
+                    quote=True
+                )
+
+        # If token is valid and has waited long enough, verify user
             await update_verify_status(id, is_verified=True, verified_time=time.time())
             logging.info(f"User {id} successfully verified with token: {token}")
 
@@ -98,7 +116,11 @@ async def start_command(client: Client, message: Message):
 
         if not verify_status['is_verified']:
             token = ''.join(random.choices(rohit.ascii_letters + rohit.digits, k=10))
+            generated_time = time.time()
+        
             await update_verify_status(id, verify_token=token, link="")
+            await store_generated_time(id, generated_time)  # Store generated time separately
+
             logging.info(f"Nᴇᴡ ᴛᴏᴋᴇɴ ɢᴇɴᴇʀᴀᴛᴇᴅ ғᴏʀ ᴜsᴇʀ {id}: {token}")
 
             link = await get_shortlink(SHORTLINK_URL, SHORTLINK_API, f'https://telegram.dog/{client.username}?start=verify_{token}')
@@ -112,12 +134,10 @@ async def start_command(client: Client, message: Message):
                         f"<blockquote>Tʜɪs ɪs ᴀɴ ᴀᴅs ᴛᴏᴋᴇɴ. ᴘᴀssɪɴɢ ᴏɴᴇ ᴀᴅ ᴀʟʟᴏᴡs ʏᴏᴜ ᴛᴏ ᴜsᴇ ᴛʜᴇ ʙᴏᴛ ғᴏʀ {get_exp_time(VERIFY_EXPIRE)}</blockquote>\n</b>",
                 reply_markup=InlineKeyboardMarkup([
                     [InlineKeyboardButton("Vᴇʀɪғʏ ʜᴇʀᴇ", url=link)],
-                     [InlineKeyboardButton("Tᴜᴛᴏʀɪᴀʟ", url=TUT_VID)]
+                    [InlineKeyboardButton("Tᴜᴛᴏʀɪᴀʟ", url=TUT_VID)]
                 ])
             )
-    
                             
-
     text = message.text        
     if len(text)>7:
         await message.delete()
