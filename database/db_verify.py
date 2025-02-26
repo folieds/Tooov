@@ -87,4 +87,4 @@ async def update_verify_status(id, is_verified=None, verify_token=None, link=Non
         update_data["generated_time"] = generated_time
 
     if update_data:
-        await ver_data.update_one({"user_id": id}, {"$set": update_data}, upsert=True)
+        await vers_data.update_one({"user_id": id}, {"$set": update_data}, upsert=True)
