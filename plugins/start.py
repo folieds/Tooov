@@ -98,11 +98,7 @@ async def start_command(client: Client, message: Message):
             if not generated_time or (time.time() - generated_time) < MIN_VERIFY_TIME:
                 remaining_time = int(MIN_VERIFY_TIME - (time.time() - generated_time))
                 logging.warning(f"User {id} tried to verify too early. Remaining time: {remaining_time} sec")
-                return await message.reply(
-                    f"<blockquote>Yᴏᴜ ᴄᴀɴ ᴏɴʟʏ ᴠᴇʀɪғʏ ᴀғᴛᴇʀ {MIN_VERIFY_TIME} sᴇᴄᴏɴᴅs.</blockquote>\n"
-                    f"<blockquote>Pʟᴇᴀsᴇ ᴡᴀɪᴛ {remaining_time} sᴇᴄᴏɴᴅs ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ.</blockquote>",
-                    quote=True
-                )
+                return await message.reply("<blockquote>Yᴏᴜʀ ᴛᴏᴋᴇɴ ɪs ɪɴᴠᴀʟɪᴅ ᴏʀ ᴇxᴘɪʀᴇᴅ. Tʀʏ ᴀɢᴀɪɴ ʙʏ ᴄʟɪᴄᴋɪɴɢ /start</blockquote>")
 
         # If token is valid and has waited long enough, verify user
             await update_verify_status(id, is_verified=True, verified_time=time.time())
