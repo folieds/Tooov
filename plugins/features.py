@@ -217,6 +217,10 @@ async def delete_admins(client: Client, message: Message):
         await pro.edit("<b><blockquote>⁉️ No admin IDs available to delete</blockquote></b>", reply_markup=reply_markup)
 
 
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
+
+
+
 @Bot.on_message(filters.command('admin_list') & filters.private & is_admin)
 async def get_admins(client: Client, message: Message):
     pro = await message.reply("<b><i>Processing....</i></b>", quote=True)
@@ -230,6 +234,7 @@ async def get_admins(client: Client, message: Message):
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Close ✖️", callback_data="close")]])
     await pro.edit(f"<b>⚡ Admin list:</b>\n\n{admin_list}", reply_markup=reply_markup)
 
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
 
 
 
@@ -321,6 +326,7 @@ async def delete_banuser(client:Client, message:Message):
     else:
         await pro.edit("<b><blockquote>⁉️ Nᴏ Bᴀɴɴᴇᴅ Usᴇʀ ɪᴅ Lɪsᴛ ᴀᴠᴀɪʟᴀʙʟᴇ ᴛᴏ Dᴇʟᴇᴛᴇ</blockquote></b>", reply_markup=reply_markup)
 
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
 
 @Bot.on_message(filters.command('banuser_list') & filters.private & is_admin)
 async def get_banuser_list(client:Client, message: Message):        
@@ -378,6 +384,7 @@ async def autoDelete_settings(client, message):
     except Exception as e:
             reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Cʟᴏsᴇ ✖️", callback_data = "close")]])
             await message.reply(f"<b>! Eʀʀᴏʀ Oᴄᴄᴜʀᴇᴅ..\n<blockquote>Rᴇᴀsᴏɴ:</b> {e}</blockquote><b><i>Cᴏɴᴛᴀɴᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ: @rohit_1888</i></b>", reply_markup=reply_markup)
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
 
 
 #Files related settings command
@@ -496,3 +503,4 @@ async def set_shortener(client, message):
             ),
             reply_markup=reply_markup
         )
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
