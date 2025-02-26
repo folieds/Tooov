@@ -73,17 +73,18 @@ async def get_verify_status(user_id):
         'link': ""
     }
 
-async def update_verify_status(user_id, verify_token="", is_verified=False, verified_time=None, link=""):
-    if verified_time is None:  
-        verified_time = datetime.utcnow().timestamp() if is_verified else 0  # Default to current time if verified
+async def update_verify_status(id, is_verified=None, verify_token=None, link=None, verified_time=None, generated_time=None):
+    update_data = {}
+    if is_verified is not None:
+        update_data["is_verified"] = is_verified
+    if verify_token is not None:
+        update_data["verify_token"] = verify_token
+    if link is not None:
+        update_data["link"] = link
+    if verified_time is not None:
+        update_data["verified_time"] = verified_time
+    if generated_time is not None:
+        update_data["generated_time"] = generated_time
 
-    await vers_data.update_one(
-        {'_id': user_id},
-        {'$set': {
-            'is_verified': is_verified,
-            'verified_time': verified_time,
-            'verify_token': verify_token,
-            'link': link
-        }},
-        upsert=True  # Creates a document if not found
-    )
+    if update_data:
+        await db.update_one({"user_id": id}, {"$set": update_data}, upsert=True)
