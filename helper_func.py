@@ -1,4 +1,9 @@
 # +++ Made By Sanjiii [telegram username: @Urr_Sanjiii] +++
+# Sanji is NOOB
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
+
+
+
 
 import base64
 import re
@@ -33,6 +38,8 @@ async def check_admin(filter, client, update):
         print(f"! Exception in check_admin: {e}")
         return False
 
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
+
 
 # Check user subscription in Channels in a more optimized way
 async def is_subscribed(filter, client, update):
@@ -56,6 +63,8 @@ async def is_subscribed(filter, client, update):
 
     # If any result is False, return False; else return True
     return all(results)
+
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
 
 
 #Chcek user subscription by specifying channel id and user id
@@ -83,6 +92,7 @@ async def get_shortlink(url, api, link):
     link = await shortzy.convert(link)
     return link
 
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
 
 async def encode(string):
     try:
@@ -92,6 +102,7 @@ async def encode(string):
         return base64_string
     except Exception as e:
         print(f'Error occured on encode, reason: {e}')
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
 
 async def decode(base64_string):
     try:
@@ -102,6 +113,7 @@ async def decode(base64_string):
         return string
     except Exception as e:
         print(f'Error occured on decode, reason: {e}')
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
 
 async def get_messages(client, message_ids):
     try:
@@ -127,6 +139,7 @@ async def get_messages(client, message_ids):
         return messages
     except Exception as e:
         print(f'Error occured on get_messages, reason: {e}')
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
 
 async def get_message_id(client, message):
     if message.forward_from_chat:
@@ -152,6 +165,18 @@ async def get_message_id(client, message):
     else:
         return 0
 
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
+
+def get_exp_time(seconds):
+    periods = [('days', 86400), ('hours', 3600), ('mins', 60), ('secs', 1)]
+    result = ''
+    for period_name, period_seconds in periods:
+        if seconds >= period_seconds:
+            period_value, seconds = divmod(seconds, period_seconds)
+            result += f'{int(period_value)} {period_name}'
+    return result
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
+
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -173,6 +198,7 @@ def get_readable_time(seconds: int) -> str:
     time_list.reverse()
     up_time += ":".join(time_list)
     return up_time
+# +++ Customised by Rohit[telegram username: @rohit_1888] +++
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Check user subscription in Channels
