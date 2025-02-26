@@ -6,7 +6,7 @@ import random
 import asyncio
 import subprocess
 from bot import Bot
-from database.database import db, kingdb
+from database.database import db
 from database.db_verify import *
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
