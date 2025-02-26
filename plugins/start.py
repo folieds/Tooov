@@ -11,7 +11,7 @@ import string as rohit
 import time
 from pyrogram import Client, filters, __version__
 from pyrogram.enums import ParseMode, ChatAction
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 from plugins.autoDelete import auto_del_notification, delete_message
 from bot import Bot
