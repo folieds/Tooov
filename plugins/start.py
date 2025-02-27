@@ -104,7 +104,7 @@ async def start_command(client: Client, message: Message):
 		        reply_markup=InlineKeyboardMarkup([
                     [InlineKeyboardButton("Vᴇʀɪғʏ ᴀɢᴀɪɴ", url=f"https://t.me/{client.username}?start")],
                     [InlineKeyboardButton("Tᴜᴛᴏʀɪᴀʟ", url=TUT_VID),
-		    InlineKeyboardButton("Dᴇᴠʟᴏᴘᴇʀ", url = "t.me/metaui") ]
+		    InlineKeyboardButton("Dᴇᴠʟᴏᴘᴇʀ", url = "https://t.me/metaui") ]
                 ])
 		)
 
@@ -132,10 +132,7 @@ async def start_command(client: Client, message: Message):
 
             return await message.reply_photo(
                 photo=TOKEN_PIC,
-                caption=f"<b><blockquote>Yᴏᴜʀ ᴛᴏᴋᴇɴ ʜᴀs ᴇxᴘɪʀᴇᴅ. ᴘʟᴇᴀsᴇ ʀᴇғʀᴇsʜ ʏᴏᴜʀ ᴛᴏᴋᴇɴ ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ.</blockquote>\n"
-                        f"<blockquote>Tᴏᴋᴇɴ ᴛɪᴍᴇᴏᴜᴛ : {get_exp_time(VERIFY_EXPIRE)}</blockquote>\n\n"
-                        f"<blockquote>Wʜᴀᴛ ɪs ᴛʜᴇ ᴛᴏᴋᴇɴ?</blockquote>\n"
-                        f"<blockquote>Tʜɪs ɪs ᴀɴ ᴀᴅs ᴛᴏᴋᴇɴ. ᴘᴀssɪɴɢ ᴏɴᴇ ᴀᴅ ᴀʟʟᴏᴡs ʏᴏᴜ ᴛᴏ ᴜsᴇ ᴛʜᴇ ʙᴏᴛ ғᴏʀ {get_exp_time(VERIFY_EXPIRE)}</blockquote>\n</b>",
+                caption=f"<blockquote><b>Hey🤴 {message.from_user.mention}</b></blockquote>\n\n<i>Your Ads token is expired, refresh your token and try again.</i> \n\n<b>Token Timeout:</b> {get_exp_time(VERIFY_EXPIRE)} \n\n<blockquote expandable><b>What is token?</b> \n<i>This is an ads token. If you pass 1 ad, you can use the bot for 24 hour after passing the ad.</i>\n\n<b>APPLE/IPHONE USERS COPY TOKEN LINK AND OPEN IN CHROME BROWSER</b></blockquote>",
                 reply_markup=InlineKeyboardMarkup([
                     [InlineKeyboardButton("Vᴇʀɪғʏ ʜᴇʀᴇ", url=link)],
                     [InlineKeyboardButton("Tᴜᴛᴏʀɪᴀʟ", url=TUT_VID)]
@@ -220,9 +217,10 @@ async def start_command(client: Client, message: Message):
                         
     else:   
         reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton("•  ғᴏʀ ᴍᴏʀᴇ  •", callback_data='about')],
-                    [InlineKeyboardButton("• sᴇᴛᴛɪɴɢs", callback_data='setting'),
-                     InlineKeyboardButton("ᴅᴇᴠᴇʟᴏᴘᴇʀ •", url='https://t.me/URR_SANJIII')],
+                    [InlineKeyboardButton("• ғᴏʀ ᴍᴏʀᴇ •", url='https://t.me/Pythonbotz')],
+                    [InlineKeyboardButton("• ᴀʙᴏᴜᴛ", callback_data='about'),
+                     InlineKeyboardButton('sᴇᴛᴛɪɴɢs •', callback_data='setting')],
+                    [InlineKeyboardButton("• ᴏᴜʀ ᴄᴏᴍᴍᴜɴɪᴛʏ •", url='https://t.me/AniHorizon/53')],
                 ])
         await message.reply_photo(
             photo = random.choice(PICS),
@@ -294,7 +292,7 @@ async def not_joined(client: Client, message: Message):
                                                             
                 except Exception as e:
                     print(f"Can't Export Channel Name and Link..., Please Check If the Bot is admin in the FORCE SUB CHANNELS:\nProvided Force sub Channel:- {chat_id}")
-                    return await temp.edit(f"<b><i>! ᴇʀʀᴏʀ, ᴄᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Urr_Sanjiii</i></b>\n<blockquote expandable><b>ʀᴇᴀsᴏɴ:</b> {e}</blockquote>")
+                    return await temp.edit(f"<b><i>! ᴇʀʀᴏʀ, ᴄᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @metaui</i></b>\n<blockquote expandable><b>ʀᴇᴀsᴏɴ:</b> {e}</blockquote>")
 
         try:
             buttons.append([InlineKeyboardButton(text='‼️ ɴᴏᴡ ᴄʟɪᴄᴋ ʜᴇʀᴇ ‼️', url=f"https://t.me/{client.username}?start={message.command[1]}")])
@@ -323,7 +321,7 @@ async def not_joined(client: Client, message: Message):
                         
     except Exception as e:
         print(f"Unable to perform forcesub buttons reason : {e}")
-        return await temp.edit(f"<b><i>! ᴇʀʀᴏʀ, ᴄᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Urr_Sanjiii</i></b>\n<blockquote expandable><b>ʀᴇᴀsᴏɴ:</b> {e}</blockquote>")
+        return await temp.edit(f"<b><i>! ᴇʀʀᴏʀ, ᴄᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @metaui</i></b>\n<blockquote expandable><b>ʀᴇᴀsᴏɴ:</b> {e}</blockquote>")
 
 # +++ Customised By Rohit [telegram username: @rohit_1888] +++
 
@@ -342,7 +340,7 @@ async def restart_bot(client: Client, message: Message):
         os.execl(sys.executable, *args)
     except Exception as e:
         print(f"Error occured while Restarting the bot: {e}")
-        return await msg.edit_text(f"<b><i>! ᴇʀʀᴏʀ, ᴄᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @Urr_Sanjiii</i></b>\n<blockquote expandable><b>ʀᴇᴀsᴏɴ:</b> {e}</blockquote>")
+        return await msg.edit_text(f"<b><i>! ᴇʀʀᴏʀ, ᴄᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @metaui</i></b>\n<blockquote expandable><b>ʀᴇᴀsᴏɴ:</b> {e}</blockquote>")
     # Optionally, you can add cleanup tasks here
     #subprocess.Popen([sys.executable, "main.py"])  # Adjust this if your start file is named differently
     #sys.exit()
