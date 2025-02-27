@@ -499,7 +499,7 @@ async def set_shortener(client, message):
             (
                 f"❌ Error Occurred:\n\n"
                 f"Reason: {e}\n\n"
-                f"📩 Contact developer: [Rohit](https://t.me/metaui)"
+                f"📩 Contact developer: [Ben 10](https://t.me/metaui)"
             ),
             reply_markup=reply_markup
         )
