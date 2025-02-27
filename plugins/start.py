@@ -102,7 +102,7 @@ async def start_command(client: Client, message: Message):
 			video = "https://envs.sh/ekQ.mp4",
 			caption = "<blockquote><b>🚨 Bʏᴘᴀss Aᴛᴛᴇᴍᴘᴛ Dᴇᴛᴇᴄᴛᴇᴅ! 🚨</blockquote>\n\n⚠ Wᴀʀɴɪɴɢ!</b><i> ʏᴏᴜ ᴍᴜsᴛ ʀᴇsᴏʟᴠᴇ ᴛʜᴇ ʟɪɴᴋ ᴛᴏ ᴀᴄᴄᴇss ᴛʜᴇ ғɪʟᴇ. ɴᴏ sʜᴏʀᴛᴄᴜᴛs, ɴᴏ ᴛʀɪᴄᴋs! ᴀɴʏ ᴀᴛᴛᴇᴍᴘᴛ ᴛᴏ ʙʏᴘᴀss ᴛʜᴇ sʏsᴛᴇᴍ ᴡɪʟʟ ᴛʀɪɢɢᴇʀ ᴀɴ ɪɴsᴛᴀɴᴛ ʙᴀɴ! 🚫🔥</i><b>\n\nTʀʏ ᴀɢᴀɪɴ ʙʏ ᴄʟɪᴄᴋɪɴɢ /start</b>",
 		        reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton("Vᴇʀɪғʏ ᴀɢᴀɪɴ", url=f"https://t.me/{client.username}?start=metaui")],
+                    [InlineKeyboardButton("Vᴇʀɪғʏ ᴀɢᴀɪɴ", url=f"https://t.me/{client.username}?start")],
                     [InlineKeyboardButton("Tᴜᴛᴏʀɪᴀʟ", url=TUT_VID),
 		    InlineKeyboardButton("Dᴇᴠʟᴏᴘᴇʀ", url = "t.me/metaui") ]
                 ])
