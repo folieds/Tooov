@@ -1,4 +1,4 @@
-#made by @rohit_1888
+#made by @metaui
 
 from bot import Bot
 import asyncio
@@ -326,7 +326,7 @@ async def delete_banuser(client:Client, message:Message):
     else:
         await pro.edit("<b><blockquote>⁉️ Nᴏ Bᴀɴɴᴇᴅ Usᴇʀ ɪᴅ Lɪsᴛ ᴀᴠᴀɪʟᴀʙʟᴇ ᴛᴏ Dᴇʟᴇᴛᴇ</blockquote></b>", reply_markup=reply_markup)
 
-# +++ Customised by Rohit[telegram username: @rohit_1888] +++
+# +++ Customised by Rohit[telegram username: @metaui] +++
 
 @Bot.on_message(filters.command('banuser_list') & filters.private & is_admin)
 async def get_banuser_list(client:Client, message: Message):        
@@ -383,8 +383,8 @@ async def autoDelete_settings(client, message):
             )
     except Exception as e:
             reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Cʟᴏsᴇ ✖️", callback_data = "close")]])
-            await message.reply(f"<b>! Eʀʀᴏʀ Oᴄᴄᴜʀᴇᴅ..\n<blockquote>Rᴇᴀsᴏɴ:</b> {e}</blockquote><b><i>Cᴏɴᴛᴀɴᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ: @rohit_1888</i></b>", reply_markup=reply_markup)
-# +++ Customised by Rohit[telegram username: @rohit_1888] +++
+            await message.reply(f"<b>! Eʀʀᴏʀ Oᴄᴄᴜʀᴇᴅ..\n<blockquote>Rᴇᴀsᴏɴ:</b> {e}</blockquote><b><i>Cᴏɴᴛᴀɴᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ: @metaui</i></b>", reply_markup=reply_markup)
+# +++ Customised by Rohit[telegram username: @metaui] +++
 
 
 #Files related settings command
@@ -424,7 +424,7 @@ async def files_commands(client: Client, message: Message):
         )
     except Exception as e:
         reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Cʟᴏsᴇ ✖️", callback_data = "close")]])
-        await message.reply(f"<b>! Eʀʀᴏʀ Oᴄᴄᴜʀᴇᴅ..\n<blockquote>Rᴇᴀsᴏɴ:</b> {e}</blockquote><b><i>Cᴏɴᴛᴀɴᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ: @rohit_1888</i></b>", reply_markup=reply_markup)
+        await message.reply(f"<b>! Eʀʀᴏʀ Oᴄᴄᴜʀᴇᴅ..\n<blockquote>Rᴇᴀsᴏɴ:</b> {e}</blockquote><b><i>Cᴏɴᴛᴀɴᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ: @metaui</i></b>", reply_markup=reply_markup)
 
 
 #Request force sub mode commad,,,,,,
@@ -499,8 +499,8 @@ async def set_shortener(client, message):
             (
                 f"❌ Error Occurred:\n\n"
                 f"Reason: {e}\n\n"
-                f"📩 Contact developer: [Rohit](https://t.me/rohit_1888)"
+                f"📩 Contact developer: [Rohit](https://t.me/metaui)"
             ),
             reply_markup=reply_markup
         )
-# +++ Customised by Rohit[telegram username: @rohit_1888] +++
+# +++ Customised by Rohit[telegram username: @metaui] +++
