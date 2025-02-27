@@ -96,15 +96,18 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             pass
 
     elif data == "about":
-        await query.message.edit_text(
-            text=(
-                f"<b>○ Updates : <a href='https://t.me/metaui'>Rohit</a>\n"
-                f"○ Language : <code>Python3</code>\n"
-                f"○ Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio {__version__}</a>"
+        user = await client.get_users(OWNER_ID)
+        user_link = f"https://t.me/{user.username}" if user.username else f"tg://openmessage?user_id={OWNER_ID}" 
+        ownername = f"<a href={user_link}>{user.first_name}</a>" if user.first_name else f"<a href={user_link}>no name !</a>"
+        await query.edit_message_media(
+            InputMediaPhoto("https://envs.sh/Vxb.jpg", 
+                            ABOUT_TXT.format(
+                                botname = client.name,
+                                ownername = ownername, 
+                            )
             ),
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton('⬅️ Bᴀᴄᴋ', callback_data='start'), InlineKeyboardButton(
-                    'Cʟᴏsᴇ ✖️', callback_data='close')]
+                [InlineKeyboardButton('• Bᴀᴄᴋ', callback_data='start'), InlineKeyboardButton('Cʟᴏsᴇ •', callback_data='close')]
             ]),
         )
 
@@ -134,8 +137,8 @@ async def cb_handler(client: Bot, query: CallbackQuery):
                 )
                 ),
                 reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton('⬅️ Bᴀᴄᴋ', callback_data='start'), InlineKeyboardButton(
-                        'Cʟᴏsᴇ ✖️', callback_data='close')]
+                    [InlineKeyboardButton('• Bᴀᴄᴋ', callback_data='start'), InlineKeyboardButton(
+                        'Cʟᴏsᴇ •', callback_data='close')]
                 ]),
             )
         except Exception as e:
