@@ -257,7 +257,7 @@ async def not_joined(client: Client, message: Message):
 
     REQFSUB = await db.get_request_forcesub()
     buttons = []
-    #count = 0
+    count = 0
 
     try:
         for total, chat_id in enumerate(await db.get_all_channels(), start=1):
@@ -288,8 +288,8 @@ async def not_joined(client: Client, message: Message):
 
                     # Add button for the chat
                     buttons.append([InlineKeyboardButton(text=cname, url=link)])
-                    #count += 1
-                    #await temp.edit(f"<b>{'! ' * count}</b>")
+                    count += 1
+                    await temp.edit(f"<b>{'! ' * count}</b>")
 
                 except Exception as e:
                     print(f"Can't Export Channel Name and Link..., Please Check If the Bot is admin in the FORCE SUB CHANNELS:\nProvided Force sub Channel:- {chat_id}")
