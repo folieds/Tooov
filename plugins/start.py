@@ -252,9 +252,9 @@ chat_data_cache = {}
 @Bot.on_message(filters.command('start') & filters.private & ~banUser)
 async def not_joined(client: Client, message: Message):
     temp = await message.reply(f"<b>??</b>")
-    
+
     user_id = message.from_user.id
-               
+
     REQFSUB = await db.get_request_forcesub()
     buttons = []
     count = 0
@@ -262,7 +262,7 @@ async def not_joined(client: Client, message: Message):
     try:
         for total, chat_id in enumerate(await db.get_all_channels(), start=1):
             await message.reply_chat_action(ChatAction.PLAYING)
-            
+
             # Show the join button of non-subscribed Channels.....
             if not await is_userJoin(client, user_id, chat_id):
                 try:
@@ -272,14 +272,14 @@ async def not_joined(client: Client, message: Message):
                     else:
                         data = await client.get_chat(chat_id)  # Fetch from API
                         chat_data_cache[chat_id] = data  # Store in cache
-                    
+
                     cname = data.title
-                    
+
                     # Handle private channels and links
                     if REQFSUB and not data.username: 
                         link = await db.get_stored_reqLink(chat_id)
                         await db.add_reqChannel(chat_id)
-                        
+
                         if not link:
                             link = (await client.create_chat_invite_link(chat_id=chat_id, creates_join_request=True)).invite_link
                             await db.store_reqLink(chat_id, link)
@@ -287,41 +287,36 @@ async def not_joined(client: Client, message: Message):
                         link = data.invite_link
 
                     # Add button for the chat
-                    buttons.append([InlineKeyboardButton(text='››  ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ  ×', url=link)])
+                    buttons.append([InlineKeyboardButton(text=cname, url=link)])
                     count += 1
                     await temp.edit(f"<b>{'! ' * count}</b>")
-                                                            
+
                 except Exception as e:
                     print(f"Can't Export Channel Name and Link..., Please Check If the Bot is admin in the FORCE SUB CHANNELS:\nProvided Force sub Channel:- {chat_id}")
-                    return await temp.edit(f"<b><i>! ᴇʀʀᴏʀ, ᴄᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @metaui</i></b>\n<blockquote expandable><b>ʀᴇᴀsᴏɴ:</b> {e}</blockquote>")
+                    return await temp.edit(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @RexySama</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
 
         try:
-            buttons.append([InlineKeyboardButton(text='‼️ ɴᴏᴡ ᴄʟɪᴄᴋ ʜᴇʀᴇ ‼️', url=f"https://t.me/{client.username}?start={message.command[1]}")])
+            buttons.append([InlineKeyboardButton(text='♻️ Tʀʏ Aɢᴀɪɴ', url=f"https://t.me/{client.username}?start={message.command[1]}")])
         except IndexError:
             pass
 
-        await message.reply_chat_action(ChatAction.CANCEL)
         await message.reply_photo(
-            photo = random.choice(PICS),
-            caption = FORCE_MSG.format(
-                    first=message.from_user.first_name,
-                    last=message.from_user.last_name,
-                    username=None if not message.from_user.username else '@' + message.from_user.username,
-                    mention=message.from_user.mention,
-                    id=message.from_user.id,
-                    count=count,
-                    total=total
-                )
+            photo=random.choice(PICS),
+            caption=FORCE_MSG.format(
+                first=message.from_user.first_name,
+                last=message.from_user.last_name,
+                username=None if not message.from_user.username else '@' + message.from_user.username,
+                mention=message.from_user.mention,
+                id=message.from_user.id
             ),
             reply_markup=InlineKeyboardMarkup(buttons),
+    message_effect_id=5104841245755180586  #🔥 Add the effect ID here
         )
-                
-        try: await message.delete()
-        except: pass
-                        
     except Exception as e:
-        print(f"Unable to perform forcesub buttons reason : {e}")
-        return await temp.edit(f"<b><i>! ᴇʀʀᴏʀ, ᴄᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @metaui</i></b>\n<blockquote expandable><b>ʀᴇᴀsᴏɴ:</b> {e}</blockquote>")
+        print(f"Error: {e}")  # Print the error message for debugging
+        # Optionally, send an error message to the user or handle further actions here
+        await temp.edit(f"<b><i>! Eʀʀᴏʀ, Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ sᴏʟᴠᴇ ᴛʜᴇ ɪssᴜᴇs @rohit_1888</i></b>\n<blockquote expandable><b>Rᴇᴀsᴏɴ:</b> {e}</blockquote>")
+
 
 # +++ Customised By Rohit [telegram username: @rohit_1888] +++
 
