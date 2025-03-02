@@ -81,7 +81,7 @@ async def is_userJoin(client, user_id, channel_id):
         
     except UserNotParticipant:
         if await db.get_request_forcesub(): #and await privateChannel(client, channel_id):
-                return await kingdb.reqSent_user_exist(channel_id, user_id)
+                return await db.reqSent_user_exist(channel_id, user_id)
             
         return False
         
