@@ -1,12 +1,13 @@
 # --- For-Bot-Working --------- #
 pyrogram
-pyrofork==2.3.38
+pyrofork
 TgCrypto
 pyromod==1.5
 schedule
 APscheduler
 # --- For-Database ------------ #
 pymongo
+requests
 motor
 dnspython
 # --- For-Web-Response ------- #
